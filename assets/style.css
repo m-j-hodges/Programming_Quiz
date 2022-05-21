@@ -1,0 +1,28 @@
+body {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.high-score {
+  font-size: 20px;
+  text-align: left;
+  background-color: rgb(191, 190, 190);
+  display:inline;
+}
+.high-score:hover {
+  background-color: rgb(170, 163, 115);
+}
+
+.timer {
+  display:inline;
+  float: right;
+  margin: 0px;
+  padding: 10px 10px;
+  font-size: 20px;
+  
+}
