@@ -37,7 +37,17 @@ var answersq7 = "<br><button class='btn btn-primary' value='for loop' type='subm
 <button class='btn btn-primary' value='ring loops' type='submit'>ring loops</button>\
 <button class='btn btn-primary' value='if/else' type='submit'>if/else</button>"
 var q8 = "<p>What tag is used in HTML to create a horizontal rule?<p>"
-var answersq8 = "<br><button class='btn btn-primary' value=`<hr>` type='submit'>`<hr>`</button>\
+var answersq8 = "<br><button class='btn btn-primary' value='<hr>' type='submit'>&lt;hr&gt;</button>\
+<button class='btn btn-primary' value='<horizontal rule>' type='submit'>&lt;horizontal rule&gt;</button>\
+<button class='btn btn-primary' value='<rule>' type='submit'>&lt;rule&gt;</button>\
+<button class='btn btn-primary' value='<break>' type='submit'>&lt;break&gt;</button>"
+var q9 = "<p>What is the parent element to the html tag in Javascript?<p>"
+var answersq9 = "<br><button class='btn btn-primary' value='<hr>' type='submit'>&lt;hr&gt;</button>\
+<button class='btn btn-primary' value='simple loops' type='submit'>simple loops</button>\
+<button class='btn btn-primary' value='ring loops' type='submit'>ring loops</button>\
+<button class='btn btn-primary' value='if/else' type='submit'>if/else</button>"
+var q10 = "<p>What tag is used in HTML to create a horizontal rule?<p>"
+var answersq10 = "<br><button class='btn btn-primary' value='<hr>' type='submit'>&lt;hr&gt;</button>\
 <button class='btn btn-primary' value='simple loops' type='submit'>simple loops</button>\
 <button class='btn btn-primary' value='ring loops' type='submit'>ring loops</button>\
 <button class='btn btn-primary' value='if/else' type='submit'>if/else</button>"
@@ -150,6 +160,57 @@ $('#questionFive').on('click', '.btn-primary', function(e) {
     $('#questionFive').remove();
     $('#questionSix').append(q6);
     $('#questionSix').append(answersq6);
+  };
+
+});
+
+$('#questionSix').on('click', '.btn-primary', function(e) {
+  e.preventDefault();
+  if($(e.target).val() == 'not equal to') {
+    $('#questionSix').remove();
+    alert("That's correct, keep up the good work.")
+    $('#questionSeven').append(q7);
+    $('#questionSeven').append(answersq7);
+    score++
+  } else {
+    alert("oops, that is the wrong answer.")
+    $('#questionSix').remove();
+    $('#questionSeven').append(q7);
+    $('#questionSeven').append(answersq7);
+  };
+
+});
+
+$('#questionSeven').on('click', '.btn-primary', function(e) {
+  e.preventDefault();
+  if($(e.target).val() == 'for loop') {
+    $('#questionSeven').remove();
+    alert("That's correct, keep up the good work.")
+    $('#questionEight').append(q8);
+    $('#questionEight').append(answersq8);
+    score++
+  } else {
+    alert("oops, that is the wrong answer.")
+    $('#questionSeven').remove();
+    $('#questionEight').append(q8);
+    $('#questionEight').append(answersq8);
+  };
+
+});
+
+$('#questionEight').on('click', '.btn-primary', function(e) {
+  e.preventDefault();
+  if($(e.target).val() == '<hr>') {
+    $('#questionEight').remove();
+    alert("That's correct, keep up the good work.")
+    $('#questionNine').append(q9);
+    $('#questionNine').append(answersq9);
+    score++
+  } else {
+    alert("oops, that is the wrong answer.")
+    $('#questionEight').remove();
+    $('#questionNine').append(q9);
+    $('#questionNine').append(answersq9);
   };
 
 });
