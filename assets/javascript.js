@@ -42,17 +42,22 @@ var answersq8 = "<br><button class='btn btn-primary' value='<hr>' type='submit'>
 <button class='btn btn-primary' value='<rule>' type='submit'>&lt;rule&gt;</button>\
 <button class='btn btn-primary' value='<break>' type='submit'>&lt;break&gt;</button>"
 var q9 = "<p>What is the parent element to the html tag in Javascript?<p>"
-var answersq9 = "<br><button class='btn btn-primary' value='<hr>' type='submit'>&lt;hr&gt;</button>\
-<button class='btn btn-primary' value='simple loops' type='submit'>simple loops</button>\
-<button class='btn btn-primary' value='ring loops' type='submit'>ring loops</button>\
-<button class='btn btn-primary' value='if/else' type='submit'>if/else</button>"
-var q10 = "<p>What tag is used in HTML to create a horizontal rule?<p>"
-var answersq10 = "<br><button class='btn btn-primary' value='<hr>' type='submit'>&lt;hr&gt;</button>\
-<button class='btn btn-primary' value='simple loops' type='submit'>simple loops</button>\
-<button class='btn btn-primary' value='ring loops' type='submit'>ring loops</button>\
-<button class='btn btn-primary' value='if/else' type='submit'>if/else</button>"
+var answersq9 = "<br><button class='btn btn-primary' value='window' type='submit'>window</button>\
+<button class='btn btn-primary' value='body' type='submit'>body</button>\
+<button class='btn btn-primary' value='document' type='submit'>document</button>\
+<button class='btn btn-primary' value='root' type='submit'>root</button>"
+var q10 = "<p>_____ is used to style webpages written in HTML.<p>"
+var answersq10 = "<br><button class='btn btn-primary' value='Python' type='submit'>Python</button>\
+<button class='btn btn-primary' value='HTML' type='submit'>HTML</button>\
+<button class='btn btn-primary' value='Cascading Style Sheets' type='submit'>Cascading Style Sheets</button>\
+<button class='btn btn-primary' value='Javascript' type='submit'>Javascript</button>"
 var score = 0;
+var finalScore = 0;
 
+
+function displayQ1() {
+  $('#questionOne').append(q1)
+};
 quizButton.on("click", function() {
     $('#objective').hide()
     $('#startQuiz').remove()
@@ -60,8 +65,17 @@ quizButton.on("click", function() {
     startCountDown();
     displayQ1();
     displaybutton1();
-    
+    timerTest();
 })
+
+function timerTest() {
+  if (timer.text() == 0) {
+    alert("Sorry, you ran out of time. Please try again.")
+  location.reload();
+  } else {}; 
+};
+setInterval(timerTest, 1000)
+
 function startCountDown() {
 if (timer !== "timer" || timer !== 0) {
   countDown = $(".timer").text() - 1;
@@ -215,8 +229,89 @@ $('#questionEight').on('click', '.btn-primary', function(e) {
 
 });
 
+$('#questionNine').on('click', '.btn-primary', function(e) {
+  e.preventDefault();
+  if($(e.target).val() == 'document') {
+    $('#questionNine').remove();
+    alert("That's correct, keep up the good work.")
+    $('#questionTen').append(q10);
+    $('#questionTen').append(answersq10);
+    score++
+  } else {
+    alert("oops, that is the wrong answer.")
+    $('#questionNine').remove();
+    $('#questionNine').append(q10);
+    $('#questionNine').append(answersq10);
+  };
 
-function displayQ1() {
-  $('#questionOne').append(q1)
+});
+$('#questionTen').on('click', '.btn-primary', function(e) {
+  e.preventDefault();
+  if($(e.target).val() == 'Cascading Style Sheets') {
+    
+    $('#questionTen').hide();
+    alert("That's correct, keep up the good work.")
+    score++
+    var finalScore = score/10*100
+    $('#quiz').append(`<h2>Great job on the quiz. Your final score is ${score}/10 or ${finalScore}%</h2>`);
+    $('#quiz').append("<input id='userName' name='userName' type='text'></input><br><br><button class='btn btn-primary' id='saveScore'>Save your score</button>");
+  
+  } else {
+    $('#questionTen').hide();
+    alert("Great job on the quiz. Your final score is shown.")
+    var finalScore = score/10*100
+    $('#quiz').append(`<h2>Great job on the quiz. Your final score is ${score}/10 or ${finalScore}%</h2>`);
+    $('#quiz').append("<input id='userName' name='userName' type='text'></input><br><br><button class='btn btn-primary' id='saveScore'>Save your score</button>");
+  };
 
-}
+});
+
+$('#quiz').on('click', '#saveScore', function(event) {
+  event.preventDefault();
+  userName = $('#userName').val();
+  localStorage.setItem(userName , score)
+
+});
+
+function allStorage() {
+    var archive = [];
+    for (var i = 0; i<localStorage.length; i++) {
+        archive[i] = localStorage.getItem(localStorage.key(i));
+    }
+};
+
+function showHighScore() {
+  
+  $('#mainSection').empty();
+  $('#mainSection').append("<h2 id='listHighScores'>Here is a List of saved High scores.</h2><br>\
+  <button value='reset' id='resetScores'>Reset Scores</button>");
+  var user = []
+  var userScore = []
+  user1 = localStorage.key(0)
+  user2 = localStorage.key(1)
+  for (let i = 0; i < localStorage.length; i++) {
+    $('#mainSection').append(`<p id='scoresSection'>${localStorage.key(i)}: ${localStorage.getItem(localStorage.key(i))}<p>`)
+    
+  };
+    
+    
+  
+};
+$('#mainSection').on('click', '#resetScores', function(e) {
+  e.preventDefault();
+  if($(e.target).val() == 'reset') {
+    localStorage.clear();
+    console.log("localstorage was cleared...")
+    $('#scoresSection').empty();
+      
+  } else {};
+
+});
+
+
+$(".high-score").on('click', function(m) {
+  m.preventDefault();
+  showHighScore();
+  
+
+});

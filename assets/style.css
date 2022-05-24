@@ -30,6 +30,11 @@ button {
   background-color: rgb(170, 163, 115);
 }
 
+h2 {
+  text-align: center;
+
+}
+
 .timer {
   display:inline;
   float: right;
