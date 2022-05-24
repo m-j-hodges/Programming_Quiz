@@ -1,5 +1,5 @@
 body {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
 
 }
 
@@ -7,6 +7,18 @@ p {
   margin: 0px;
   padding: 0px;
   text-align:center;
+}
+
+#resetScores {
+  background-color:#CCCCCC;
+  color: blue;
+  border: 4px solid lightgrey;
+
+}
+
+#resetScores:hover {
+  background-color: #e9ecbc;
+  border: 4px solid gold;
 }
 
 #button-wrapper {

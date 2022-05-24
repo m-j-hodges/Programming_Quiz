@@ -284,7 +284,7 @@ function showHighScore() {
   
   $('#mainSection').empty();
   $('#mainSection').append("<h2 id='listHighScores'>Here is a List of saved High scores.</h2><br>\
-  <button value='reset' id='resetScores'>Reset Scores</button>");
+  <button value='reset' id='resetScores'>Reset Scores</button><br><button id='reloadPage'>Back to quiz</button>");
   var user = []
   var userScore = []
   user1 = localStorage.key(0)
@@ -294,9 +294,13 @@ function showHighScore() {
     
   };
     
-    
-  
 };
+$('#mainSection').on('click', '#reloadPage', function() {
+  location.reload();
+
+});
+
+
 $('#mainSection').on('click', '#resetScores', function(e) {
   e.preventDefault();
   if($(e.target).val() == 'reset') {
